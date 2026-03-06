@@ -2,29 +2,19 @@ using MediatR;
 using Mediatr.FluentBehavior.Exceptions;
 using Mediatr.FluentBehavior.Interfaces;
 
-namespace Mediatr.FluentBehavior;
+namespace Mediatr.FluentBehavior.Implementations;
 
 /// <summary>
 /// Построитель пайплайна обработчиков
 /// </summary>
 public class MediatorPipelineBuilder<TResponse>(
+    IRequest<TResponse> command,
     IMediator mediator,
-    IServiceProvider serviceProvider) : IMediatrPipelineBuilder<TResponse>
+    IServiceProvider serviceProvider) : IMediatorPipelineBuilder<TResponse>
 {
-    private IRequest<TResponse>? _command;
     private readonly List<IFluentBehavior<IRequest<TResponse>, TResponse>> _behaviors = new();
-
-    public IMediatrPipelineBuilder<TResponse> SetCommand(IRequest<TResponse> command)
-    {
-        if (_command != null)
-            throw new CommandAlreadySetException();
-        
-        _command = command;
-        
-        return this;
-    }
     
-    public IMediatrPipelineBuilder<TResponse> WithBehavior(
+    public IMediatorPipelineBuilder<TResponse> WithBehavior(
         IFluentBehavior<IRequest<TResponse>, TResponse> behavior)
     {
         _behaviors.Add(behavior);
@@ -32,7 +22,7 @@ public class MediatorPipelineBuilder<TResponse>(
         return this;
     }
     
-    public IMediatrPipelineBuilder<TResponse> WithBehavior(
+    public IMediatorPipelineBuilder<TResponse> WithBehavior(
         Func<IServiceProvider, IFluentBehavior<IRequest<TResponse>, TResponse>> behaviorFunc)
     {
         var behavior = behaviorFunc(serviceProvider);
@@ -44,16 +34,16 @@ public class MediatorPipelineBuilder<TResponse>(
 
     public async Task<TResponse> ExecuteAsync(CancellationToken cancellationToken = default)
     {
-        if (_command == null)
+        if (command == null)
             throw new CommandNotSetException();
         
-        var next = () => mediator.Send(_command, cancellationToken);
+        var next = () => mediator.Send(command, cancellationToken);
 
         foreach (var behavior in _behaviors)
         {
             var nextCopy = next;
             var behavior1 = behavior;
-            next = () => behavior1.Handle(_command, nextCopy, cancellationToken);
+            next = () => behavior1.Handle(command, nextCopy, cancellationToken);
         }
 
         return await next();

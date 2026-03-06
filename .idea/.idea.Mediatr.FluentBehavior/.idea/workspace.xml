@@ -1,4 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PropertiesComponent">{}</component>
+  <component name="ChangeListManager">
+    <list default="true" id="68b0cf0e-72a0-4f21-b06e-8659b0116e9c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/MediatorPipelineFactory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IMediatorPipelineFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mediatr.FluentBehavior/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mediatr.FluentBehavior/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Demo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Demo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/RegisterExtensions/MediatorCommandBuilderExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/RegisterExtensions/MediatorCommandBuilderExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.Tests/Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Tests/Tests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/Exceptions/CommandAlreadySetException.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/Exceptions/CommandNotSetException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Exceptions/CommandNotSetException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IMediatrPipelineBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IMediatorPipelineBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/MediatorPipelineBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/MediatorPipelineBuilder.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Hizeqwane"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Hizeqwane/Mediatr.FluentBehavior.git",
+    "accountId": "633f8a52-266f-409c-97f9-2c1d105ff23d"
+  }
+}]]></component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="3AYnzQ8JljRz9yxazqa2H5TgeQp" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "main",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="68b0cf0e-72a0-4f21-b06e-8659b0116e9c" name="Changes" comment="" />
+      <created>1772778632552</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1772778632552</updated>
+      <workItem from="1772778633612" duration="849000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
 </project>

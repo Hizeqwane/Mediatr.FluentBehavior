@@ -5,22 +5,17 @@ namespace Mediatr.FluentBehavior.Interfaces;
 /// <summary>
 /// Построитель пайплайна обработки
 /// </summary>
-public interface IMediatrPipelineBuilder<TResponse>
+public interface IMediatorPipelineBuilder<TResponse>
 {
-    /// <summary>
-    /// Установка базовой команды
-    /// </summary>
-    IMediatrPipelineBuilder<TResponse> SetCommand(IRequest<TResponse> request);
-    
     /// <summary>
     /// Добавление декоратора
     /// </summary>
-    IMediatrPipelineBuilder<TResponse> WithBehavior(IFluentBehavior<IRequest<TResponse>, TResponse> behavior);
+    IMediatorPipelineBuilder<TResponse> WithBehavior(IFluentBehavior<IRequest<TResponse>, TResponse> behavior);
     
     /// <summary>
     /// Добавление декоратора с использованием DI
     /// </summary>
-    IMediatrPipelineBuilder<TResponse> WithBehavior(
+    IMediatorPipelineBuilder<TResponse> WithBehavior(
         Func<IServiceProvider, IFluentBehavior<IRequest<TResponse>, TResponse>> behavior);
 
     /// <summary>

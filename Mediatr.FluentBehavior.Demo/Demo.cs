@@ -2,6 +2,7 @@
 using Mediatr.FluentBehavior.Demo.Implementations;
 using Mediatr.FluentBehavior.Interfaces;
 using Mediatr.FluentBehavior.Demo.RegisterExtensions;
+using Mediatr.FluentBehavior.Implementations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Xunit;
@@ -22,16 +23,16 @@ public class Demo(ITestOutputHelper testOutputHelper)
             builder.SetMinimumLevel(LogLevel.Debug);
         });
         
-        services.AddTransient(typeof(IMediatrPipelineBuilder<>), typeof(MediatorPipelineBuilder<>));
+        services.AddScoped<IMediatorPipelineFactory>();
 
         var serviceProvider = services.BuildServiceProvider();
 
-        var builder1 = serviceProvider.GetRequiredService<IMediatrPipelineBuilder<string>>();
-        var builder2 = serviceProvider.GetRequiredService<IMediatrPipelineBuilder<string>>();
+        var factory = serviceProvider.GetRequiredService<IMediatorPipelineFactory>();
         
         var command = new Command("Hello", 2);
 
-        var result = await builder1.SetCommand(command)
+        var result = await factory
+            .ByCommand(command)
             .WithRetry(3, TimeSpan.FromSeconds(1))
             .WithLogging()
             .ExecuteAsync();
@@ -39,7 +40,8 @@ public class Demo(ITestOutputHelper testOutputHelper)
         testOutputHelper.WriteLine($"Результат: {result}");
 
         var command2 = new Command("Hello without retry", 0);
-        var result2 = await builder2.SetCommand(command2)
+        var result2 = await factory
+            .ByCommand(command2)
             .WithLogging()
             .ExecuteAsync();
 
