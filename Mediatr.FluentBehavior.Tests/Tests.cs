@@ -2,6 +2,7 @@
 using System.Reflection;
 using MediatR;
 using Mediatr.FluentBehavior.Exceptions;
+using Mediatr.FluentBehavior.Implementations;
 using Mediatr.FluentBehavior.Interfaces;
 using Mediatr.FluentBehavior.Tests.Plugs;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,17 +19,17 @@ public class Tests()
         // Arrange
         var services = new ServiceCollection();
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        services.AddTransient(typeof(IMediatrPipelineBuilder<>), typeof(MediatorPipelineBuilder<>));
+        services.AddScoped<IMediatorPipelineFactory, MediatorPipelineFactory>();
         services.AddSingleton(Mock.Of<IMediator>());
     
         var sp = services.BuildServiceProvider();
         var mediatorMock = sp.GetRequiredService<IMediator>();
-        var builder = sp.GetRequiredService<IMediatrPipelineBuilder<string>>();
+        var factory = sp.GetRequiredService<IMediatorPipelineFactory>();
         var command = new TestCommand("Hello");
 
         // Act
-        await builder
-            .SetCommand(command)
+        await factory
+            .ByCommand(command)
             .ExecuteAsync();
 
         // Assert
@@ -41,10 +42,10 @@ public class Tests()
         // Arrange
         var services = new ServiceCollection();
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        services.AddTransient(typeof(IMediatrPipelineBuilder<>), typeof(MediatorPipelineBuilder<>));
+        services.AddScoped<IMediatorPipelineFactory, MediatorPipelineFactory>();
     
         var sp = services.BuildServiceProvider();
-        var builder = sp.GetRequiredService<IMediatrPipelineBuilder<string>>();
+        var factory = sp.GetRequiredService<IMediatorPipelineFactory>();
         var command = new TestCommand("Hello");
         var behaviorMock = new Mock<IFluentBehavior<IRequest<string>, string>>();
     
@@ -53,8 +54,8 @@ public class Tests()
             .Returns<TestCommand, Func<Task<string>>, CancellationToken>((_, next, _) => next());
 
         // Act
-        await builder
-            .SetCommand(command)
+        await factory
+            .ByCommand(command)
             .WithBehavior(behaviorMock.Object)
             .ExecuteAsync();
 
@@ -70,10 +71,10 @@ public class Tests()
         // Arrange
         var services = new ServiceCollection();
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        services.AddTransient(typeof(IMediatrPipelineBuilder<>), typeof(MediatorPipelineBuilder<>));
+        services.AddScoped<IMediatorPipelineFactory, MediatorPipelineFactory>();
     
         var sp = services.BuildServiceProvider();
-        var builder = sp.GetRequiredService<IMediatrPipelineBuilder<string>>();
+        var factory = sp.GetRequiredService<IMediatorPipelineFactory>();
         var command = new TestCommand("Hello");
         var executionOrder = new List<string>();
 
@@ -96,8 +97,8 @@ public class Tests()
             });
 
         // Act
-        await builder
-            .SetCommand(command)
+        await factory
+            .ByCommand(command)
             .WithBehavior(behavior1.Object)  // добавляется первым
             .WithBehavior(behavior2.Object)  // добавляется вторым
             .ExecuteAsync();
@@ -112,11 +113,11 @@ public class Tests()
         // Arrange
         var services = new ServiceCollection();
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        services.AddTransient(typeof(IMediatrPipelineBuilder<>), typeof(MediatorPipelineBuilder<>));
+        services.AddScoped<IMediatorPipelineFactory, MediatorPipelineFactory>();
     
         var sp = services.BuildServiceProvider();
         var mediatorMock = new Mock<IMediator>();
-        var builder = sp.GetRequiredService<IMediatrPipelineBuilder<string>>();
+        var factory = sp.GetRequiredService<IMediatorPipelineFactory>();
         var command = new TestCommand("Hello");
     
         var behaviorMock = new Mock<IFluentBehavior<IRequest<string>, string>>();
@@ -125,8 +126,8 @@ public class Tests()
             .ThrowsAsync(new InvalidOperationException());
 
         // Act & Assert
-        await Assert.ThrowsAsync<InvalidOperationException>(() => builder
-            .SetCommand(command)
+        await Assert.ThrowsAsync<InvalidOperationException>(() => factory
+            .ByCommand(command)
             .WithBehavior(behaviorMock.Object)
             .ExecuteAsync());
 
@@ -139,10 +140,10 @@ public class Tests()
         // Arrange
         var services = new ServiceCollection();
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        services.AddTransient(typeof(IMediatrPipelineBuilder<>), typeof(MediatorPipelineBuilder<>));
+        services.AddScoped<IMediatorPipelineFactory, MediatorPipelineFactory>();
     
         var sp = services.BuildServiceProvider();
-        var builder = sp.GetRequiredService<IMediatrPipelineBuilder<string>>();
+        var factory = sp.GetRequiredService<IMediatorPipelineFactory>();
         var command = new TestCommand("Hello");
         var expectedResult = "modified";
 
@@ -152,8 +153,8 @@ public class Tests()
             .ReturnsAsync(expectedResult);
 
         // Act
-        var result = await builder
-            .SetCommand(command)
+        var result = await factory
+            .ByCommand(command)
             .WithBehavior(behaviorMock.Object)
             .ExecuteAsync();
 
@@ -180,12 +181,12 @@ public class Tests()
             .ReturnsAsync("result");
 
         // Создаём builder напрямую, передавая моки
-        var builder = new MediatorPipelineBuilder<string>(mediatorMock.Object, serviceProviderMock.Object);
+        var factory = new MediatorPipelineFactory(mediatorMock.Object, serviceProviderMock.Object);
         var command = new TestCommand("Hello");
 
         // Act
-        await builder
-            .SetCommand(command)
+        await factory
+            .ByCommand(command)
             .WithBehavior(sp => sp.GetRequiredService<IFluentBehavior<IRequest<string>, string>>())
             .ExecuteAsync();
 
@@ -204,38 +205,20 @@ public class Tests()
             Times.Once);
     }
     
-    [Fact, Description("Попытка установить команду дважды")]
-    public void SetCommand_WhenCommandAlreadySet_ShouldThrowCommandAlreadySetException()
-    {
-        // Arrange
-        var services = new ServiceCollection();
-        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        services.AddTransient(typeof(IMediatrPipelineBuilder<>), typeof(MediatorPipelineBuilder<>));
-    
-        var sp = services.BuildServiceProvider();
-        var builder = sp.GetRequiredService<IMediatrPipelineBuilder<string>>();
-        var command1 = new TestCommand("Hello");
-        var command2 = new TestCommand("Already hello");
-
-        // Act
-        builder.SetCommand(command1);
-
-        // Assert
-        Assert.Throws<CommandAlreadySetException>(() => builder.SetCommand(command2));
-    }
-    
     [Fact, Description("Выполнение без установленной команды")]
     public async Task ExecuteAsync_WhenCommandNotSet_ShouldThrowException()
     {
         // Arrange
         var services = new ServiceCollection();
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        services.AddTransient(typeof(IMediatrPipelineBuilder<>), typeof(MediatorPipelineBuilder<>));
+        services.AddScoped<IMediatorPipelineFactory, MediatorPipelineFactory>();
     
         var sp = services.BuildServiceProvider();
-        var builder = sp.GetRequiredService<IMediatrPipelineBuilder<string>>();
+        var factory = sp.GetRequiredService<IMediatorPipelineFactory>();
 
         // Act & Assert
-        await Assert.ThrowsAsync<CommandNotSetException>(() => builder.ExecuteAsync());
+        await Assert.ThrowsAsync<CommandNotSetException>(() => factory
+            .ByCommand((IRequest<string>)null)
+            .ExecuteAsync());
     }
 }

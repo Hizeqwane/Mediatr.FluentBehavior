@@ -11,12 +11,12 @@ namespace Mediatr.FluentBehavior.Demo.RegisterExtensions;
 /// </summary>
 public static class MediatorCommandBuilderExtensions
 {
-    extension<TResponse>(IMediatrPipelineBuilder<TResponse> builder)
+    extension<TResponse>(IMediatorPipelineBuilder<TResponse> builder)
     {
         /// <summary>
         /// Декоратор повторных попыток обработки
         /// </summary>
-        public IMediatrPipelineBuilder<TResponse> WithRetry(int count,
+        public IMediatorPipelineBuilder<TResponse> WithRetry(int count,
             TimeSpan delay)
         {
             builder.WithBehavior(GetRetryBehavior);
@@ -36,7 +36,7 @@ public static class MediatorCommandBuilderExtensions
         /// <summary>
         /// Декоратор логирования
         /// </summary>
-        public IMediatrPipelineBuilder<TResponse> WithLogging()
+        public IMediatorPipelineBuilder<TResponse> WithLogging()
         {
             builder.WithBehavior(GetLoggingBehavior);
         
