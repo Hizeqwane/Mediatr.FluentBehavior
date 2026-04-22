@@ -30,7 +30,7 @@ services.AddScoped<IMediatorPipelineFactory, MediatorPipelineFactory>();        
 
 ### 2. Создание поведения
 
-Реализуйте интерфейс IFluentBehavior<TRequest, TResponse>:
+Реализуйте интерфейс _IFluentBehavior<TRequest, TResponse>_:
 
 ```csharp
 public interface IFluentBehavior<in TRequest, TResponse>
@@ -46,7 +46,7 @@ public interface IFluentBehavior<in TRequest, TResponse>
 
 ### 3. Регистрация extension-методов
 
-Для удобства использования рекомендуется создавать extension-методы для IMediatrPipelineBuilder<TResponse>:
+Для удобства использования рекомендуется создавать extension-методы для _IMediatrPipelineBuilder\<TResponse>_:
 
 ```csharp
 public static class MediatorPipelineBuilderExtensions
@@ -108,6 +108,10 @@ public class MyService(IMediatrPipelineFactory pipelineFactory)
 ```
 
 то цепочка выполнения будет: B → A → обработчик.
+
+## Конфигурирование
+
+На данный момент _BasePipelineBuilder_ резолвит из DI _IOptions\<PipelineBuilderOptions>_ для получения флага _IsBehaviorsInDi_, который влияет на метод _.WithBehaviour\<TBehavior>()_: если флаг = true, то декоратор резолвится из DI, в противном случае все сервисы, которые требует конструктор декоратора будут взяты из DI и декоратор будет создан при добавлении.
 
 ## Для реализаций собственных шин обработки команд
 

@@ -1,28 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="68b0cf0e-72a0-4f21-b06e-8659b0116e9c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Extensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Logging/LoggingOptions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Retry/RetryOptions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Exceptions/CtorNotFoundException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Extensions/Extensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/BasePipelineBuilder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/PipelineBuilderOptions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IPipelineBuilder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IPipelineFactory.cs" afterDir="false" />
+    <list default="true" id="68b0cf0e-72a0-4f21-b06e-8659b0116e9c" name="Changes" comment="Доработка для кастомных шин + доработка работы с DI и опциями">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mediatr.FluentBehavior/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mediatr.FluentBehavior/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Demo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Demo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/LoggingBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Logging/LoggingBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/RetryBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Retry/RetryBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/RegisterExtensions/MediatorCommandBuilderExtensions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.Tests/Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Tests/Tests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.slnx" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.slnx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/MediatorPipelineBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/MediatorPipelineBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/MediatorPipelineFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/MediatorPipelineFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IMediatorPipelineBuilder.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IMediatorPipelineFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IMediatorPipelineFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +21,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SHOW_RECENT_BRANCHES" value="false" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -83,6 +62,12 @@
     "last_opened_file_path": "/Users/egovishnyakov/RiderProjects/My/Mediatr.FluentBehavior/Mediatr.FluentBehavior.slnx",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory",
+      "repository"
+    ]
   }
 }]]></component>
   <component name="TaskManager">
@@ -95,7 +80,7 @@
       <workItem from="1772778633612" duration="1277000" />
       <workItem from="1774615836692" duration="2139000" />
       <workItem from="1776320312404" duration="2761000" />
-      <workItem from="1776790452728" duration="5618000" />
+      <workItem from="1776790452728" duration="6324000" />
     </task>
     <task id="LOCAL-00001" summary="Add MediatorPipelineFactory">
       <option name="closed" value="true" />
@@ -105,7 +90,23 @@
       <option name="project" value="LOCAL" />
       <updated>1772779508144</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Доработка для кастомных шин + доработка работы с DI и опциями">
+      <option name="closed" value="true" />
+      <created>1776858601774</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1776858601774</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Доработка для кастомных шин + доработка работы с DI и опциями">
+      <option name="closed" value="true" />
+      <created>1776858939585</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1776858939585</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,9 +114,33 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add MediatorPipelineFactory" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add MediatorPipelineFactory" />
+    <MESSAGE value="Доработка для кастомных шин + доработка работы с DI и опциями" />
+    <option name="LAST_COMMIT_MESSAGE" value="Доработка для кастомных шин + доработка работы с DI и опциями" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
