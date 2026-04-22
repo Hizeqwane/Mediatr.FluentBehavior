@@ -1,15 +1,15 @@
 using Mediatr.FluentBehavior.Interfaces;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
-namespace Mediatr.FluentBehavior.Demo.Implementations.Behaviors;
+namespace Mediatr.FluentBehavior.Demo.Implementations.Behaviors.Retry;
 
 /// <summary>
 /// Декоратор - повторные попытки выполнения
 /// </summary>
 public partial class RetryBehavior<TRequest, TResponse>(
     ILogger<RetryBehavior<TRequest, TResponse>> logger,
-    int retryCount,
-    TimeSpan delay)
+    IOptions<RetryOptions> options)
     : IFluentBehavior<TRequest, TResponse>
 {
     public async Task<TResponse> Handle(
@@ -26,11 +26,11 @@ public partial class RetryBehavior<TRequest, TResponse>(
                 
                 return await next();
             }
-            catch when (attempt++ <= retryCount)
+            catch when (attempt++ <= options.Value.RetryCount)
             {
-                LogErrorToRetry(logger, GetType().Name, delay);
+                LogErrorToRetry(logger, GetType().Name, options.Value.Delay);
                 
-                await Task.Delay(delay, cancellationToken);
+                await Task.Delay(options.Value.Delay, cancellationToken);
             }
         }
     }

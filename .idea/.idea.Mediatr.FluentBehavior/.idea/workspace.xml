@@ -2,41 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68b0cf0e-72a0-4f21-b06e-8659b0116e9c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/MediatorPipelineFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IMediatorPipelineFactory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Extensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Logging/LoggingOptions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Retry/RetryOptions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Exceptions/CtorNotFoundException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Extensions/Extensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/BasePipelineBuilder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/PipelineBuilderOptions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IPipelineBuilder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IPipelineFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mediatr.FluentBehavior/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mediatr.FluentBehavior/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Demo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Demo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/RegisterExtensions/MediatorCommandBuilderExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/RegisterExtensions/MediatorCommandBuilderExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/LoggingBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Logging/LoggingBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/RetryBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Retry/RetryBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/RegisterExtensions/MediatorCommandBuilderExtensions.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.Tests/Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Tests/Tests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/Exceptions/CommandAlreadySetException.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/Exceptions/CommandNotSetException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Exceptions/CommandNotSetException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IMediatrPipelineBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IMediatorPipelineBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/MediatorPipelineBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/MediatorPipelineBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior.slnx" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior.slnx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/MediatorPipelineBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/MediatorPipelineBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/MediatorPipelineFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/MediatorPipelineFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IMediatorPipelineBuilder.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IMediatorPipelineFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mediatr.FluentBehavior/Interfaces/IMediatorPipelineFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Hizeqwane"
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main1" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SHOW_RECENT_BRANCHES" value="false" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Hizeqwane&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Hizeqwane/Mediatr.FluentBehavior.git",
-    "accountId": "633f8a52-266f-409c-97f9-2c1d105ff23d"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Hizeqwane/Mediatr.FluentBehavior.git&quot;,
+    &quot;accountId&quot;: &quot;633f8a52-266f-409c-97f9-2c1d105ff23d&quot;
   }
-}]]></component>
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Extensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Logging/LoggingOptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Mediatr.FluentBehavior/Implementations/PipelineBuilderOptions.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="3AYnzQ8JljRz9yxazqa2H5TgeQp" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -47,10 +74,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "78cf6407-ab5b-4ff1-930a-701c4b3579b4.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/egovishnyakov/RiderProjects/My/Mediatr.FluentBehavior/Mediatr.FluentBehavior.slnx",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -61,8 +92,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1772778632552</updated>
-      <workItem from="1772778633612" duration="849000" />
+      <workItem from="1772778633612" duration="1277000" />
+      <workItem from="1774615836692" duration="2139000" />
+      <workItem from="1776320312404" duration="2761000" />
+      <workItem from="1776790452728" duration="5618000" />
     </task>
+    <task id="LOCAL-00001" summary="Add MediatorPipelineFactory">
+      <option name="closed" value="true" />
+      <created>1772779508144</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1772779508144</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -70,4 +113,66 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add MediatorPipelineFactory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add MediatorPipelineFactory" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Retry/RetryBehavior.cs</url>
+          <line>19</line>
+          <properties documentPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Retry/RetryBehavior.cs" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="616" />
+            </startOffsets>
+            <endOffsets>
+              <option value="632" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Logging/LoggingBehavior.cs</url>
+          <line>19</line>
+          <properties documentPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Logging/LoggingBehavior.cs" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="609" />
+            </startOffsets>
+            <endOffsets>
+              <option value="751" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Logging/LoggingBehavior.cs</url>
+          <line>36</line>
+          <properties documentPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Logging/LoggingBehavior.cs" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="1071" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1243" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Logging/LoggingBehavior.cs</url>
+          <line>27</line>
+          <properties documentPath="$PROJECT_DIR$/Mediatr.FluentBehavior.Demo/Implementations/Behaviors/Logging/LoggingBehavior.cs" containingFunctionPresentation="Method 'Handle'">
+            <startOffsets>
+              <option value="825" />
+            </startOffsets>
+            <endOffsets>
+              <option value="969" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>

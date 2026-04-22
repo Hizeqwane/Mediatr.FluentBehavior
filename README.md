@@ -55,11 +55,7 @@ public static class MediatorPipelineBuilderExtensions
     {
         public IMediatrPipelineBuilder<TResponse> WithCustomBehavior()
         {
-            return builder.WithBehavior(sp =>
-                {
-                    var dependency = sp.GetRequiredService<ICustomDependency>();
-                    return new CustomBehavior<IRequest<TResponse>, TResponse>(dependency);
-                });
+            return builder.WithBehavior<CustomBehavior>();
         }
     }
 }
@@ -75,7 +71,7 @@ public class MyService(IMediatrPipelineFactory pipelineFactory)
         var command = new MyCommand();
 
         return await pipelineFactory
-            .ByCommand(command)         // Установка основной команды
+            .ByMediatorRequest(command) // Установка основной команды
             .WithCustomBehavior()       // добавление поведения
             .WithAnotherBehavior()      // ещё одно поведение
             .ExecuteAsync();            // выполнение
@@ -88,7 +84,7 @@ public class MyService(IMediatrPipelineFactory pipelineFactory)
 ```text
                              IMediatorPipelineFactory
                                         ↓
-                              .ByCommand(command)
+                           .ByMediatorRequest(command)
                                         ↓
                             IMediatorPipelineBuilder<T>
                                         ↓
@@ -112,3 +108,21 @@ public class MyService(IMediatrPipelineFactory pipelineFactory)
 ```
 
 то цепочка выполнения будет: B → A → обработчик.
+
+## Для реализаций собственных шин обработки команд
+
+Помимо использования _IMediatorPipelineFactory_  для самого _IMediatr_, можно использовать данный механизм и для собственных шин (в том числе и для кастомных обёрток над самим _IMediatr_). 
+Для этого рекомендуется сформировать собственный интерфейс (или сразу реализацию) от базового _IPipelineFactory_, которая будет накладывать на TRequest нужный constraint. Конечно, можно использовать и базовый _IPipelineFactory_, но тогда при каждом вызове _.ByRequest<TRequest, TResponse>()_ придётся указывать необходимые типы.   
+
+Сам _MediatorPipelineFactory_ следует того же принципу:
+```
+public interface IMediatorPipelineFactory : IPipelineFactory
+{
+    /// <summary>
+    /// Получить пайплайн для MediatR
+    /// </summary>
+    IPipelineBuilder<IRequest<TResponse>, TResponse> ByMediatorRequest<TResponse>(
+        IRequest<TResponse> request) => ByRequest<IRequest<TResponse>, TResponse>(request);
+}
+```
+

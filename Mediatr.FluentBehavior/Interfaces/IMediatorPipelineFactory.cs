@@ -3,13 +3,13 @@ using MediatR;
 namespace Mediatr.FluentBehavior.Interfaces;
 
 /// <summary>
-/// Провайдер построителей пайплайнов
+/// Провайдер построителей пайплайнов для MediatR
 /// </summary>
-public interface IMediatorPipelineFactory
+public interface IMediatorPipelineFactory : IPipelineFactory
 {
     /// <summary>
-    /// Получить пайплайн
+    /// Получить пайплайн для MediatR
     /// </summary>
-    IMediatorPipelineBuilder<TResponse> ByCommand<TResponse>(
-        IRequest<TResponse> request);
+    IPipelineBuilder<IRequest<TResponse>, TResponse> ByMediatorRequest<TResponse>(
+        IRequest<TResponse> request) => ByRequest<IRequest<TResponse>, TResponse>(request);
 }

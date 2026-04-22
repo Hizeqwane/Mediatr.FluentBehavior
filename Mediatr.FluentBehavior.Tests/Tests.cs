@@ -29,7 +29,7 @@ public class Tests()
 
         // Act
         await factory
-            .ByCommand(command)
+            .ByMediatorRequest(command)
             .ExecuteAsync();
 
         // Assert
@@ -55,7 +55,7 @@ public class Tests()
 
         // Act
         await factory
-            .ByCommand(command)
+            .ByMediatorRequest(command)
             .WithBehavior(behaviorMock.Object)
             .ExecuteAsync();
 
@@ -98,7 +98,7 @@ public class Tests()
 
         // Act
         await factory
-            .ByCommand(command)
+            .ByMediatorRequest(command)
             .WithBehavior(behavior1.Object)  // добавляется первым
             .WithBehavior(behavior2.Object)  // добавляется вторым
             .ExecuteAsync();
@@ -127,7 +127,7 @@ public class Tests()
 
         // Act & Assert
         await Assert.ThrowsAsync<InvalidOperationException>(() => factory
-            .ByCommand(command)
+            .ByMediatorRequest(command)
             .WithBehavior(behaviorMock.Object)
             .ExecuteAsync());
 
@@ -154,7 +154,7 @@ public class Tests()
 
         // Act
         var result = await factory
-            .ByCommand(command)
+            .ByMediatorRequest(command)
             .WithBehavior(behaviorMock.Object)
             .ExecuteAsync();
 
@@ -181,13 +181,14 @@ public class Tests()
             .ReturnsAsync("result");
 
         // Создаём builder напрямую, передавая моки
-        var factory = new MediatorPipelineFactory(mediatorMock.Object, serviceProviderMock.Object);
+        var factory = new MediatorPipelineFactory(mediatorMock.Object, serviceProviderMock.Object)
+            as IMediatorPipelineFactory;
         var command = new TestCommand("Hello");
 
         // Act
         await factory
-            .ByCommand(command)
-            .WithBehavior(sp => sp.GetRequiredService<IFluentBehavior<IRequest<string>, string>>())
+            .ByMediatorRequest(command)
+            .WithBehavior<IFluentBehavior<IRequest<string>, string>>()
             .ExecuteAsync();
 
         // Assert
@@ -218,7 +219,7 @@ public class Tests()
 
         // Act & Assert
         await Assert.ThrowsAsync<CommandNotSetException>(() => factory
-            .ByCommand((IRequest<string>)null)
+            .ByMediatorRequest((IRequest<string>)null)
             .ExecuteAsync());
     }
 }

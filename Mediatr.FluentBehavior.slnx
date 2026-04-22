@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/docs/">
+    <File Path="README.md" />
+  </Folder>
   <Project Path="Mediatr.FluentBehavior.Demo\Mediatr.FluentBehavior.Demo.csproj" />
   <Project Path="Mediatr.FluentBehavior.Tests/Mediatr.FluentBehavior.Tests.csproj" />
   <Project Path="Mediatr.FluentBehavior/Mediatr.FluentBehavior.csproj" />

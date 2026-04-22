@@ -1,22 +1,20 @@
-using MediatR;
-
 namespace Mediatr.FluentBehavior.Interfaces;
 
 /// <summary>
 /// Построитель пайплайна обработки
 /// </summary>
-public interface IMediatorPipelineBuilder<TResponse>
+public interface IPipelineBuilder<out TRequest, TResponse>
 {
     /// <summary>
     /// Добавление декоратора
     /// </summary>
-    IMediatorPipelineBuilder<TResponse> WithBehavior(IFluentBehavior<IRequest<TResponse>, TResponse> behavior);
+    IPipelineBuilder<TRequest, TResponse> WithBehavior<TBehavior>()
+        where TBehavior : IFluentBehavior<TRequest, TResponse>;
     
     /// <summary>
-    /// Добавление декоратора с использованием DI
+    /// Добавление декоратора
     /// </summary>
-    IMediatorPipelineBuilder<TResponse> WithBehavior(
-        Func<IServiceProvider, IFluentBehavior<IRequest<TResponse>, TResponse>> behavior);
+    IPipelineBuilder<TRequest, TResponse> WithBehavior(IFluentBehavior<TRequest, TResponse> behavior);
 
     /// <summary>
     /// Запустить пайплайн
